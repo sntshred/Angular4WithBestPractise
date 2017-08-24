@@ -1,0 +1,43 @@
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #grouodata="ngModelGroup">
+
+    <div class="form-group">
+      <label for="firstName">firstName</label>
+      <!-- maxlength="8" minlength="3" pattern="banana" -->
+      <input id="firstName" required type="text" class="form-control" ngModel name="firstName" #temref="ngModel" (change)="log(temref)">      {{temref.valid}}
+      <div class="alert alert-danger" *ngIf="temref.touched && !temref.valid">
+        firstName name is required
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea ngModel name="comment" required id="comment" cols="30" rows="10" class="form-control"></textarea>
+  </div>
+
+  <div class="checkbox">
+    <label>
+    <input type="checkbox" ngModel name="isSelceted" > checkbox 
+    </label>
+  </div>
+<div class="form-group">
+  <label for="contactMethod">Contact Method</label>
+  <select multiple name="contactMethod" ngModel id="contactMethod" class="form-control">
+    <option value=""></option>
+<option *ngFor="let contact of contactmethods" [ngValue]="contact">{{contact.name}}</option>
+
+  </select>
+</div>
+
+
+
+  <p>
+    {{f.value|json}}
+  </p>
+
+  <button class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+
+
+</form>

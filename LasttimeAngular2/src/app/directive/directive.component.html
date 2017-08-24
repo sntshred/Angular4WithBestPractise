@@ -1,0 +1,45 @@
+<!-- <div *ngIf="courses.length > 0; then courses1 else nocourses">
+  </div>
+<ng-template #courses1>
+  Hello to show
+</ng-template>
+<ng-template #nocourses>
+  Hello not to show
+</ng-template>
+ -->
+<!-- 
+ <div [hidden]="courses.length > 0">
+     Hello to show
+  </div>
+
+ <div [hidden]="courses.length == 0" >
+     Hello not to show(li>a)*2      
+
+  </div> -->
+<!-- ngswitch -->
+<!-- <ul class="nav nav-pills">  
+<li><a [class.active]="viewmode=='map'" (click)="chagneviewmode('map')" >Map View</a></li>
+<li><a [class.active]="viewmode=='list'" (click)="viewmode='list'" >List View</a></li>
+</ul>
+<div [ngSwitch]="viewmode">
+  <div *ngSwitchCase="'map'">Map view content</div>
+   <div *ngSwitchCase="'list'">List view content</div> 
+   <div *ngSwitchDefault>Other Wise</div> 
+  
+</div> -->
+
+<!-- ngFor -->
+<button (click)="LoadCourse()">Load Course </button>
+
+<button (click)="onAdd()">Add </button>
+
+<!-- giving only tackby method name, not excuting -->
+<ul *ngFor="let course of coursesfor; index as i; even as evenvar; trackBy:trackCourse ">
+  <li>{{course.name}}--{{i}}--{{evenvar}}
+       <span *ngIf="evenvar">Even</span>
+      <button (click)="onRemove(course)">Remove</button> 
+      <button (click)=onChange(course)>Update</button></li> 
+
+</ul>
+
+
